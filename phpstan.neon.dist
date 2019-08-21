@@ -18,10 +18,26 @@ parameters:
     autoload_files:
         - %currentWorkingDirectory%/bootstrap.php
         - %currentWorkingDirectory%/vendor/autoload.php
+        - %currentWorkingDirectory%/vendor_prefixed/ruckusing/lib/version.php
+#        - %currentWorkingDirectory%/config/dependency-injection/container-compiler.php
         # Functions
         - %currentWorkingDirectory%/inc/wpseo-functions.php
         - %currentWorkingDirectory%/inc/wpseo-non-ajax-functions.php
         - %currentWorkingDirectory%/inc/wpseo-functions-deprecated.php
+    autoload_directories:
+        - %currentWorkingDirectory%/config/dependency-injection/
+        - %currentWorkingDirectory%/src/orm/
+        - %currentWorkingDirectory%/vendor_prefixed/j4mie/idiorm/
+        - %currentWorkingDirectory%/vendor_prefixed/psr/http-message/src/
+        - %currentWorkingDirectory%/vendor_prefixed/psr/log/Psr/Log/
+        - %currentWorkingDirectory%/vendor_prefixed/psr/container/src/
+        - %currentWorkingDirectory%/vendor_prefixed/guzzlehttp/guzzle/src/
+        - %currentWorkingDirectory%/vendor_prefixed/guzzlehttp/psr7/src/
+        - %currentWorkingDirectory%/vendor_prefixed/guzzlehttp/promises/src/
+        - %currentWorkingDirectory%/vendor_prefixed/ruckusing/lib/Task/Db/
+        - %currentWorkingDirectory%/vendor_prefixed/ruckusing/lib/Ruckusing/
+        - %currentWorkingDirectory%/vendor_prefixed/symfony/dependency-injection/
+        - %currentWorkingDirectory%/vendor_prefixed/league/oauth2-client/src/
     ignoreErrors:
         # Uses func_get_args()
         - '#^Function apply_filters invoked with [34567] parameters, 2 required\.$#'
