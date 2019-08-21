@@ -1,0 +1,30 @@
+#$ composer install --prefer-dist --no-suggest
+#$ vendor_tests/bin/phpstan analyze
+
+includes:
+    - phar://phpstan.phar/conf/bleedingEdge.neon
+    - vendor_tests/szepeviktor/phpstan-wordpress/extension.neon
+parameters:
+#    level: max
+#    level: 4
+#    level: 2
+    level: 0
+    inferPrivatePropertyTypeFromConstructor: true
+    paths:
+        - %currentWorkingDirectory%/inc/
+        - %currentWorkingDirectory%/src/
+        - %currentWorkingDirectory%/frontend/
+#        - %currentWorkingDirectory%/admin/
+    autoload_files:
+        - %currentWorkingDirectory%/bootstrap.php
+        - %currentWorkingDirectory%/vendor/autoload.php
+        # Functions
+        - %currentWorkingDirectory%/inc/wpseo-functions.php
+        - %currentWorkingDirectory%/inc/wpseo-non-ajax-functions.php
+        - %currentWorkingDirectory%/inc/wpseo-functions-deprecated.php
+    ignoreErrors:
+        # Uses func_get_args()
+        - '#^Function apply_filters invoked with [34567] parameters, 2 required\.$#'
+        - '#^Function do_action invoked with [3456] parameters, 1-2 required\.$#'
+        - '#^Function current_user_can invoked with 2 parameters, 1 required\.$#'
+        - '#^Function add_query_arg invoked with [123] parameters?, 0 required\.$#'
